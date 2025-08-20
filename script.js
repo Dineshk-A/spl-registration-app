@@ -403,12 +403,20 @@ document.addEventListener('DOMContentLoaded', function() {
     window.viewAllPlayers = function() {
         const players = JSON.parse(localStorage.getItem('splPlayers') || '[]');
         console.log('All registered SPL players:', players);
+        console.log('LocalStorage key used: splPlayers');
+        console.log('Browser info:', navigator.userAgent);
+
         if (players.length === 0) {
-            alert('No SPL players registered yet!');
+            alert('No SPL players registered yet!\n\nNote: Mobile and desktop browsers have separate localStorage. If you registered on mobile, the data won\'t show on desktop and vice versa.');
         } else {
             let playerList = 'Registered SPL Players:\n\n';
             players.forEach((player, index) => {
-                playerList += `${index + 1}. ${player.playerName} (${getPositionDisplayName(player.position)}) - ${player.phone}\n`;
+                const registrationDate = new Date(player.registrationDate).toLocaleDateString();
+                playerList += `${index + 1}. ${player.playerName}\n`;
+                playerList += `   Position: ${getPositionDisplayName(player.position)}\n`;
+                playerList += `   Phone: ${player.phone}\n`;
+                playerList += `   ID: ${player.registrationId}\n`;
+                playerList += `   Registered: ${registrationDate}\n\n`;
             });
             alert(playerList);
         }
@@ -419,6 +427,48 @@ document.addEventListener('DOMContentLoaded', function() {
         if (confirm('Are you sure you want to clear all SPL player registrations? This cannot be undone.')) {
             localStorage.removeItem('splPlayers');
             alert('All SPL player registrations cleared!');
+        }
+    };
+
+    // Add function to export player data (for sharing between devices)
+    window.exportPlayers = function() {
+        const players = JSON.parse(localStorage.getItem('splPlayers') || '[]');
+        if (players.length === 0) {
+            alert('No players to export!');
+            return;
+        }
+
+        const dataStr = JSON.stringify(players, null, 2);
+        console.log('Player data to copy:', dataStr);
+
+        // Try to copy to clipboard
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(dataStr).then(() => {
+                alert(`Exported ${players.length} players to clipboard!\n\nYou can now paste this data on another device using importPlayers().`);
+            }).catch(() => {
+                alert(`Player data logged to console. Copy it manually:\n\n${dataStr.substring(0, 200)}...`);
+            });
+        } else {
+            alert(`Player data logged to console. Copy it manually:\n\n${dataStr.substring(0, 200)}...`);
+        }
+    };
+
+    // Add function to import player data (for sharing between devices)
+    window.importPlayers = function() {
+        const dataStr = prompt('Paste the player data here:');
+        if (!dataStr) return;
+
+        try {
+            const players = JSON.parse(dataStr);
+            if (Array.isArray(players)) {
+                localStorage.setItem('splPlayers', dataStr);
+                alert(`Successfully imported ${players.length} players!`);
+                console.log('Imported players:', players);
+            } else {
+                alert('Invalid data format!');
+            }
+        } catch (error) {
+            alert('Error importing data: ' + error.message);
         }
     };
 });
