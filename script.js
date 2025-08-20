@@ -1,5 +1,44 @@
+// Tab Navigation functionality
+function showTab(tabName) {
+    // Hide all tab contents
+    const tabContents = document.querySelectorAll('.tab-content');
+    tabContents.forEach(tab => {
+        tab.classList.remove('active');
+    });
+
+    // Remove active class from all nav links
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+    });
+
+    // Show selected tab
+    const selectedTab = document.getElementById(tabName);
+    if (selectedTab) {
+        selectedTab.classList.add('active');
+    }
+
+    // Add active class to corresponding nav link
+    const selectedNavLink = document.querySelector(`[data-tab="${tabName}"]`);
+    if (selectedNavLink) {
+        selectedNavLink.classList.add('active');
+    }
+
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
 // SPL Registration functionality
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize tab navigation
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const tabName = this.getAttribute('data-tab');
+            showTab(tabName);
+        });
+    });
     const form = document.getElementById('registrationForm');
     const successMessage = document.getElementById('successMessage');
     const errorMessage = document.getElementById('errorMessage');

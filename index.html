@@ -3,18 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SPL Player Registration</title>
-    <meta name="description" content="Register as a cricket player for SPL (Super Premier League). Choose your position and upload your photo!">
+    <title>SPL - Super Premier League</title>
+    <meta name="description" content="Welcome to SPL (Super Premier League) - Register as a cricket player and join the ultimate cricket tournament!">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <div class="registration-form">
-            <div class="header">
-                <h2>🏏 SPL Player Registration</h2>
-                <p>Register for Super Premier League - Upload your photo and choose your position</p>
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1>🏏 SPL</h1>
+                <span>Super Premier League</span>
             </div>
-            <form id="registrationForm">
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" data-tab="home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-tab="rules">Rules & Regulations</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link register-btn" data-tab="register">Register Now</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <div class="main-container">
+
+        <!-- Home Page -->
+        <div id="home" class="tab-content active">
+            <div class="hero-section">
+                <div class="hero-content">
+                    <h1>🏆 Welcome to Super Premier League</h1>
+                    <p class="hero-subtitle">The Ultimate Cricket Tournament Experience</p>
+                    <div class="hero-description">
+                        <p>Join the most exciting cricket league where talent meets opportunity. Register now to showcase your skills and compete with the best players!</p>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <h3>🏏</h3>
+                            <p>Professional Cricket</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>🏆</h3>
+                            <p>Championship Trophy</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>💰</h3>
+                            <p>Prize Money</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>⭐</h3>
+                            <p>Star Players</p>
+                        </div>
+                    </div>
+                    <button class="cta-button" onclick="showTab('register')">🏏 Register as Player</button>
+                </div>
+            </div>
+
+            <div class="features-section">
+                <h2>Why Join SPL?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>� Professional Platform</h3>
+                        <p>Compete in a professionally organized cricket tournament with proper facilities and equipment.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🏅 Recognition</h3>
+                        <p>Get recognized for your talent and skills. Best players get special awards and recognition.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🤝 Team Spirit</h3>
+                        <p>Experience the thrill of team cricket and build lasting friendships with fellow players.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>📈 Skill Development</h3>
+                        <p>Improve your cricket skills by playing against diverse and talented players.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rules & Regulations Page -->
+        <div id="rules" class="tab-content">
+            <div class="rules-container">
+                <h1>📋 SPL Rules & Regulations</h1>
+
+                <div class="rules-section">
+                    <h2>🏏 Tournament Format</h2>
+                    <ul>
+                        <li><strong>Format:</strong> T20 Cricket Tournament</li>
+                        <li><strong>Teams:</strong> 8 teams with 15 players each</li>
+                        <li><strong>Matches:</strong> League + Knockout format</li>
+                        <li><strong>Duration:</strong> 3 weeks tournament</li>
+                    </ul>
+                </div>
+
+                <div class="rules-section">
+                    <h2>📝 Player Registration</h2>
+                    <ul>
+                        <li><strong>Age Limit:</strong> Open for all ages (16+ recommended)</li>
+                        <li><strong>Registration Fee:</strong> ₹500 per player</li>
+                        <li><strong>Documents Required:</strong> Photo ID proof</li>
+                        <li><strong>Photo:</strong> Recent passport-size photograph mandatory</li>
+                        <li><strong>Unique Registration:</strong> One registration per phone number</li>
+                    </ul>
+                </div>
+
+                <div class="rules-section">
+                    <h2>🎯 Player Categories</h2>
+                    <ul>
+                        <li><strong>Batsman:</strong> Specialist in batting, focus on scoring runs</li>
+                        <li><strong>Bowler:</strong> Specialist in bowling, focus on taking wickets</li>
+                        <li><strong>Wicket Keeper:</strong> Specialist keeper + batting skills</li>
+                        <li><strong>All Rounder:</strong> Balanced skills in both batting and bowling</li>
+                    </ul>
+                </div>
+
+                <div class="rules-section">
+                    <h2>⚖️ Tournament Rules</h2>
+                    <ul>
+                        <li><strong>Match Duration:</strong> 20 overs per side</li>
+                        <li><strong>Team Composition:</strong> Minimum 4 bowlers, 1 wicket keeper</li>
+                        <li><strong>Powerplay:</strong> First 6 overs (maximum 2 fielders outside 30-yard circle)</li>
+                        <li><strong>Bowling Restrictions:</strong> Maximum 4 overs per bowler</li>
+                        <li><strong>DRS:</strong> Not available (Umpire's decision is final)</li>
+                    </ul>
+                </div>
+
+                <div class="rules-section">
+                    <h2>🏆 Prizes & Awards</h2>
+                    <ul>
+                        <li><strong>Winner:</strong> ₹50,000 + Trophy</li>
+                        <li><strong>Runner-up:</strong> ₹25,000 + Trophy</li>
+                        <li><strong>Best Batsman:</strong> ₹5,000 + Award</li>
+                        <li><strong>Best Bowler:</strong> ₹5,000 + Award</li>
+                        <li><strong>Best All-rounder:</strong> ₹5,000 + Award</li>
+                        <li><strong>Player of the Tournament:</strong> ₹10,000 + Special Trophy</li>
+                    </ul>
+                </div>
+
+                <div class="rules-section">
+                    <h2>📅 Important Dates</h2>
+                    <ul>
+                        <li><strong>Registration Opens:</strong> January 1, 2024</li>
+                        <li><strong>Registration Closes:</strong> January 31, 2024</li>
+                        <li><strong>Player Auction:</strong> February 5, 2024</li>
+                        <li><strong>Tournament Starts:</strong> February 15, 2024</li>
+                        <li><strong>Final Match:</strong> March 10, 2024</li>
+                    </ul>
+                </div>
+
+                <div class="rules-section">
+                    <h2>⚠️ Code of Conduct</h2>
+                    <ul>
+                        <li>Maintain sportsmanship and fair play at all times</li>
+                        <li>Respect umpires, opponents, and teammates</li>
+                        <li>No use of abusive language or unsporting behavior</li>
+                        <li>Follow all COVID-19 safety protocols if applicable</li>
+                        <li>Arrive on time for all matches and events</li>
+                    </ul>
+                </div>
+
+                <div class="cta-section">
+                    <p><strong>Ready to join SPL?</strong></p>
+                    <button class="cta-button" onclick="showTab('register')">🏏 Register Now</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Registration Page -->
+        <div id="register" class="tab-content">
+            <div class="registration-form">
+                <div class="header">
+                    <h2>🏏 SPL Player Registration</h2>
+                    <p>Register for Super Premier League - Upload your photo and choose your position</p>
+                </div>
+                <form id="registrationForm">
                 <div class="form-group">
                     <label for="playerName">Player Name *</label>
                     <input type="text" id="playerName" name="playerName" placeholder="Enter your full name" required>
@@ -65,44 +232,47 @@
                 <button type="submit" class="submit-btn">🏏 Register for SPL</button>
             </form>
 
-            <div class="login-link">
-                <p>Need to update your registration? <a href="#" id="updateLink">Update Details</a></p>
+                <div class="login-link">
+                    <p>Need to update your registration? <a href="#" id="updateLink">Update Details</a></p>
+                </div>
             </div>
-        </div>
-        
-        <!-- Success Message -->
-        <div id="successMessage" class="message success-message" style="display: none;">
-            <h3>🎉 SPL Registration Successful!</h3>
-            <p>Welcome to Super Premier League! Your registration has been confirmed.</p>
-            <div class="player-info">
-                <p><strong>Player:</strong> <span id="confirmedName"></span></p>
-                <p><strong>Position:</strong> <span id="confirmedPosition"></span></p>
-                <p><strong>Phone:</strong> <span id="confirmedPhone"></span></p>
-                <p><strong>Registration ID:</strong> <span id="registrationId"></span></p>
-                <p><strong>Photo:</strong> <span id="confirmedPhoto"></span></p>
+
+            <!-- Success Message -->
+            <div id="successMessage" class="message success-message" style="display: none;">
+                <h3>🎉 SPL Registration Successful!</h3>
+                <p>Welcome to Super Premier League! Your registration has been confirmed.</p>
+                <div class="player-info">
+                    <p><strong>Player:</strong> <span id="confirmedName"></span></p>
+                    <p><strong>Position:</strong> <span id="confirmedPosition"></span></p>
+                    <p><strong>Phone:</strong> <span id="confirmedPhone"></span></p>
+                    <p><strong>Registration ID:</strong> <span id="registrationId"></span></p>
+                    <p><strong>Photo:</strong> <span id="confirmedPhoto"></span></p>
+                </div>
+                <p><small>Keep your phone number safe - it's your unique identifier!</small></p>
+                <button class="cta-button" onclick="showTab('home')" style="margin-top: 15px;">🏠 Back to Home</button>
             </div>
-            <p><small>Keep your phone number safe - it's your unique identifier!</small></p>
+
+            <!-- Error Message -->
+            <div id="errorMessage" class="message error-message" style="display: none;">
+                <h3>❌ Registration Failed</h3>
+                <p id="errorText">Please check your information and try again.</p>
+            </div>
+
+            <!-- Duplicate Registration Message -->
+            <div id="duplicateMessage" class="message warning-message" style="display: none;">
+                <h3>⚠️ Player Already Registered</h3>
+                <p>A player with this phone number is already registered:</p>
+                <div class="existing-player-info">
+                    <p><strong>Name:</strong> <span id="existingName"></span></p>
+                    <p><strong>Position:</strong> <span id="existingPosition"></span></p>
+                    <p><strong>Registered:</strong> <span id="existingDate"></span></p>
+                </div>
+                <p>Each phone number can only register once. Contact support if you need to update your details.</p>
+            </div>
         </div>
 
-        <!-- Error Message -->
-        <div id="errorMessage" class="message error-message" style="display: none;">
-            <h3>❌ Registration Failed</h3>
-            <p id="errorText">Please check your information and try again.</p>
-        </div>
+    </div> <!-- End main-container -->
 
-        <!-- Duplicate Registration Message -->
-        <div id="duplicateMessage" class="message warning-message" style="display: none;">
-            <h3>⚠️ Player Already Registered</h3>
-            <p>A player with this phone number is already registered:</p>
-            <div class="existing-player-info">
-                <p><strong>Name:</strong> <span id="existingName"></span></p>
-                <p><strong>Position:</strong> <span id="existingPosition"></span></p>
-                <p><strong>Registered:</strong> <span id="existingDate"></span></p>
-            </div>
-            <p>Each phone number can only register once. Contact support if you need to update your details.</p>
-        </div>
-    </div>
-    
     <script src="script.js"></script>
 </body>
 </html>
