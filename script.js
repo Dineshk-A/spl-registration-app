@@ -166,12 +166,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function validateForm() {
         let isValid = true;
-        
+        const errors = [];
+
         Object.keys(validationRules).forEach(fieldName => {
             if (!validateField(fieldName)) {
                 isValid = false;
+                errors.push(fieldName);
             }
         });
+
+        if (!isValid) {
+            console.log('Form validation failed for fields:', errors);
+        } else {
+            console.log('Form validation passed successfully');
+        }
 
         return isValid;
     }
@@ -214,6 +222,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function submitForm() {
+        console.log('Starting SPL registration process...');
+
         // Show loading state
         submitBtn.disabled = true;
         submitBtn.classList.add('loading');
@@ -228,24 +238,43 @@ document.addEventListener('DOMContentLoaded', function() {
         const formData = new FormData(form);
         const playerData = Object.fromEntries(formData.entries());
 
+        console.log('Player data collected:', {
+            name: playerData.playerName,
+            phone: playerData.phone,
+            position: playerData.position
+        });
+
         // Handle photo file
         const photoFile = photoInput.files[0];
-        let photoFileName = '';
         if (photoFile) {
+            console.log('Processing photo:', photoFile.name, 'Size:', photoFile.size);
+
             // Generate filename based on player name (for future backend implementation)
             const cleanName = playerData.playerName.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase();
             const fileExtension = photoFile.name.split('.').pop();
-            photoFileName = `${cleanName}_${Date.now()}.${fileExtension}`;
+            const photoFileName = `${cleanName}_${Date.now()}.${fileExtension}`;
+
+            console.log('Generated photo filename:', photoFileName);
 
             // For now, store as base64 in localStorage (in real backend, save file with new name)
             const reader = new FileReader();
             reader.onload = function(e) {
                 playerData.photoData = e.target.result;
                 playerData.photoFileName = photoFileName;
+                console.log('Photo processed successfully, proceeding with registration...');
                 processRegistration(playerData);
+            };
+            reader.onerror = function(e) {
+                console.error('Photo processing failed:', e);
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('loading');
+                submitBtn.textContent = '🏏 Register for SPL';
+                errorText.textContent = 'Photo processing failed. Please try again.';
+                errorMessage.style.display = 'block';
             };
             reader.readAsDataURL(photoFile);
         } else {
+            console.log('No photo uploaded, proceeding with registration...');
             processRegistration(playerData);
         }
     }
@@ -271,8 +300,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            // Simulate success (95% success rate for demo)
-            if (Math.random() > 0.05) {
+            // For demo purposes, always succeed unless there's a real validation issue
+            try {
                 // Generate registration ID
                 const registrationId = 'SPL' + Date.now().toString().slice(-6);
                 playerData.registrationId = registrationId;
@@ -282,23 +311,28 @@ document.addEventListener('DOMContentLoaded', function() {
                 existingPlayers.push(playerData);
                 localStorage.setItem('splPlayers', JSON.stringify(existingPlayers));
 
-                console.log('SPL Player registered:', playerData);
+                console.log('SPL Player registered successfully:', playerData);
 
                 // Show success message with player details
                 document.getElementById('confirmedName').textContent = playerData.playerName;
                 document.getElementById('confirmedPosition').textContent = getPositionDisplayName(playerData.position);
                 document.getElementById('confirmedPhone').textContent = playerData.phone;
                 document.getElementById('registrationId').textContent = registrationId;
-                document.getElementById('confirmedPhoto').textContent = playerData.photoFileName || 'Photo uploaded';
+                document.getElementById('confirmedPhoto').textContent = playerData.photoFileName || 'Photo uploaded successfully';
 
                 form.style.display = 'none';
                 successMessage.style.display = 'block';
-            } else {
-                // Error
-                errorText.textContent = 'SPL Registration failed due to server error. Please try again.';
+
+                // Scroll to success message
+                successMessage.scrollIntoView({ behavior: 'smooth' });
+
+            } catch (error) {
+                // Real error occurred
+                console.error('Registration error:', error);
+                errorText.textContent = 'Registration failed. Please try again or contact support.';
                 errorMessage.style.display = 'block';
             }
-        }, 2000);
+        }, 1500); // Reduced delay for better user experience
     }
 
     function getPositionDisplayName(position) {
