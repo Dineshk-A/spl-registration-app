@@ -23,8 +23,8 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         phone: {
             required: true,
-            pattern: /^(\+91|91)?[6-9]\d{9}$/,
-            message: 'Please enter a valid Indian mobile number (10 digits starting with 6-9)'
+            pattern: /^[6-9]\d{9}$/,
+            message: 'Please enter a valid 10-digit mobile number'
         },
         position: {
             required: true,
@@ -351,22 +351,13 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Utility functions
-function formatIndianPhoneNumber(input) {
-    // Format Indian phone numbers
+function formatPhoneNumber(input) {
+    // Only allow digits and limit to 10 characters
     let value = input.value.replace(/\D/g, '');
 
-    // Remove country code if present
-    if (value.startsWith('91') && value.length === 12) {
-        value = value.substring(2);
-    }
-
-    // Format as +91 XXXXX XXXXX
-    if (value.length === 10) {
-        value = '+91 ' + value.substring(0, 5) + ' ' + value.substring(5);
-    } else if (value.length > 5) {
-        value = '+91 ' + value.substring(0, 5) + ' ' + value.substring(5, 10);
-    } else if (value.length > 0) {
-        value = '+91 ' + value;
+    // Limit to 10 digits
+    if (value.length > 10) {
+        value = value.substring(0, 10);
     }
 
     input.value = value;
@@ -377,11 +368,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const phoneInput = document.getElementById('phone');
     if (phoneInput) {
         phoneInput.addEventListener('input', function() {
-            formatIndianPhoneNumber(this);
+            formatPhoneNumber(this);
         });
 
         // Set placeholder
-        phoneInput.placeholder = '+91 98765 43210';
+        phoneInput.placeholder = '9876543210';
     }
 
     // Add position-specific tips

@@ -132,7 +132,7 @@ Each phase will be committed to a separate branch:
 ## 🎯 SPL Validation Rules
 
 - **Player Name**: Minimum 2 characters, letters and dots only
-- **Phone**: Valid Indian mobile number (10 digits, starts with 6-9)
+- **Phone**: Valid 10-digit mobile number (starts with 6-9)
 - **Position**: Must select one primary playing position
 - **Photo**: Valid image file (JPG, PNG, GIF) under 5MB
 - **Uniqueness**: One registration per phone number only
@@ -144,6 +144,33 @@ Each phase will be committed to a separate branch:
 - **Preview**: Instant photo preview after upload
 - **Auto-naming**: Photos renamed as `playername_timestamp.ext`
 - **Validation**: Real-time file type and size checking
+- **Current Storage**: Base64 in localStorage (Phase 1 demo)
+- **Future Storage**: Server file system (Phase 3 backend)
+
+## 💾 File Storage Plan
+
+### Phase 1 (Current - Demo):
+```
+localStorage (browser) → Base64 encoded images
+```
+
+### Phase 3 (Backend Implementation):
+```
+Server Structure:
+/spl-registration-app/
+├── uploads/
+│   └── player-photos/
+│       ├── john_doe_1703123456789.jpg
+│       ├── jane_smith_1703123567890.png
+│       └── mike_wilson_1703123678901.jpg
+├── backend/
+└── frontend/
+```
+
+**Backend File Storage Location:**
+- **Development**: `./uploads/player-photos/` (relative to server root)
+- **Production**: `/var/www/spl-app/uploads/player-photos/` (absolute path)
+- **Cloud Option**: AWS S3, Google Cloud Storage, or similar
 
 ## 🏏 Testing Features
 
