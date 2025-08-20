@@ -1,14 +1,16 @@
-# SPL Registration App
+# 🏏 SPL Cricket Auction Registration App
 
-A progressive web application for user registration, built from simple HTML/CSS/JS to a full-stack React application.
+A progressive web application for cricket player registration and auction management, built from simple HTML/CSS/JS to a full-stack React application.
 
 ## 🚀 Project Phases
 
-### Phase 1: Simple HTML/CSS/JS ✅
-- Responsive registration form
-- Client-side validation
-- Professional UI/UX
-- Local storage demo
+### Phase 1: Cricket Player Registration ✅
+- Cricket-specific registration form
+- Player position selection (Batsman, Bowler, Wicket Keeper, All Rounder)
+- Unique phone number validation (one registration per number)
+- Experience level tracking
+- Professional cricket-themed UI
+- Local storage with duplicate prevention
 
 ### Phase 2: React Frontend (Coming Next)
 - Convert to React.js
@@ -43,9 +45,9 @@ A progressive web application for user registration, built from simple HTML/CSS/
 
 ```
 spl-registration-app/
-├── index.html          # Main registration form
-├── styles.css          # Responsive CSS styling
-├── script.js           # Form validation & interactions
+├── index.html          # Cricket player registration form
+├── styles.css          # Cricket-themed responsive styling
+├── script.js           # Player validation & duplicate checking
 └── README.md           # Project documentation
 ```
 
@@ -69,12 +71,16 @@ spl-registration-app/
 
 ## ✨ Features (Phase 1)
 
+- **Cricket-Specific Registration**: Tailored for cricket player auction
+- **Position Selection**: Batsman, Bowler, Wicket Keeper, All Rounder
+- **Unique Player Validation**: One registration per phone number
+- **Experience Tracking**: Beginner to Professional levels
+- **Age Validation**: 16-50 years (cricket auction appropriate)
+- **Indian Phone Format**: Auto-formats Indian mobile numbers (+91)
+- **Duplicate Prevention**: Shows existing player details if phone already registered
+- **Registration ID**: Unique cricket player ID generation
 - **Responsive Design**: Works on desktop, tablet, and mobile
-- **Real-time Validation**: Instant feedback on form fields
-- **Password Strength**: Enforces strong password requirements
-- **Phone Formatting**: Auto-formats phone numbers
-- **Professional UI**: Modern gradient design with animations
-- **Accessibility**: Proper labels and keyboard navigation
+- **Cricket-themed UI**: Green gradient design with cricket emojis
 
 ## 🧪 Testing on EC2
 
@@ -112,26 +118,32 @@ Each phase will be committed to a separate branch:
 - `phase-3` - Backend API
 - etc.
 
-## 📝 Form Fields
+## 📝 Cricket Registration Fields
 
-- First Name (required, letters only)
-- Last Name (required, letters only)
-- Email (required, valid email format)
-- Phone Number (required, auto-formatted)
-- Password (required, strong password policy)
-- Confirm Password (required, must match)
-- Date of Birth (required, age 13-120)
-- Gender (required, dropdown selection)
-- Terms & Conditions (required checkbox)
-- Newsletter Subscription (optional checkbox)
+- **Player Name** (required, letters only, minimum 2 characters)
+- **Phone Number** (required, Indian mobile format, unique identifier)
+- **Playing Position** (required, dropdown: Batsman/Bowler/Wicket Keeper/All Rounder)
+- **Cricket Experience** (required, dropdown: Beginner to Professional)
+- **Age** (required, 16-50 years for auction eligibility)
+- **Location/City** (required, player's base location)
+- **Previous Teams** (optional, textarea for cricket history)
+- **Auction Terms** (required checkbox)
+- **Tournament Availability** (required checkbox)
 
-## 🎯 Validation Rules
+## 🎯 Cricket-Specific Validation Rules
 
-- **Names**: Minimum 2 characters, letters only
-- **Email**: Valid email format
-- **Phone**: Valid phone number format
-- **Password**: Minimum 8 characters with uppercase, lowercase, number, and special character
-- **Age**: Must be between 13 and 120 years old
+- **Player Name**: Minimum 2 characters, letters and dots only
+- **Phone**: Valid Indian mobile number (10 digits, starts with 6-9)
+- **Position**: Must select one primary playing position
+- **Age**: Must be between 16-50 years (auction eligibility)
+- **Location**: Valid city/location name
+- **Uniqueness**: One registration per phone number only
+
+## 🏏 Testing Features
+
+Open browser console and use these commands:
+- `viewAllPlayers()` - See all registered players
+- `clearAllPlayers()` - Clear all registrations (for testing)
 
 ## 🤝 Contributing
 
