@@ -224,6 +224,79 @@ body {
     border-left-color: #ffc107;
 }
 
+/* Photo Upload Styles */
+.photo-upload-container {
+    border: 2px dashed #e1e5e9;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    transition: border-color 0.3s ease;
+    background-color: #fafafa;
+}
+
+.photo-upload-container:hover {
+    border-color: #2E8B57;
+    background-color: #f0f8f0;
+}
+
+.photo-upload-container input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.photo-preview {
+    margin-top: 15px;
+    position: relative;
+    display: inline-block;
+}
+
+.photo-preview img {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+}
+
+.remove-photo {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.remove-photo:hover {
+    background: #c82333;
+}
+
+.upload-instructions {
+    margin-top: 10px;
+}
+
+.upload-instructions p {
+    margin: 5px 0;
+    color: #2E8B57;
+    font-weight: 500;
+}
+
+.upload-instructions small {
+    color: #666;
+    font-size: 12px;
+}
+
 .loading {
     position: relative;
 }

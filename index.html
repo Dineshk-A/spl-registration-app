@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cricket Auction Player Registration</title>
-    <meta name="description" content="Register as a cricket player for the upcoming auction. Choose your position and showcase your skills!">
+    <title>SPL Player Registration</title>
+    <meta name="description" content="Register as a cricket player for SPL (Super Premier League). Choose your position and upload your photo!">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <div class="registration-form">
             <div class="header">
-                <h2>🏏 Cricket Auction Registration</h2>
-                <p>Register as a player for the upcoming cricket auction</p>
+                <h2>🏏 SPL Player Registration</h2>
+                <p>Register for Super Premier League - Upload your photo and choose your position</p>
             </div>
             <form id="registrationForm">
                 <div class="form-group">
@@ -38,43 +38,31 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="experience">Cricket Experience *</label>
-                    <select id="experience" name="experience" required>
-                        <option value="">Select experience level</option>
-                        <option value="beginner">Beginner (0-2 years)</option>
-                        <option value="intermediate">Intermediate (3-5 years)</option>
-                        <option value="experienced">Experienced (6-10 years)</option>
-                        <option value="professional">Professional (10+ years)</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="age">Age *</label>
-                    <input type="number" id="age" name="age" min="16" max="50" placeholder="25" required>
-                    <small class="help-text">Must be between 16-50 years</small>
-                </div>
-
-                <div class="form-group">
-                    <label for="location">Location/City *</label>
-                    <input type="text" id="location" name="location" placeholder="Enter your city" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="previousTeams">Previous Teams/Clubs (Optional)</label>
-                    <textarea id="previousTeams" name="previousTeams" rows="3" placeholder="List any cricket teams or clubs you've played for..."></textarea>
+                    <label for="playerPhoto">Player Photo *</label>
+                    <div class="photo-upload-container">
+                        <input type="file" id="playerPhoto" name="playerPhoto" accept="image/*" required>
+                        <div class="photo-preview" id="photoPreview" style="display: none;">
+                            <img id="previewImage" src="" alt="Player Photo Preview">
+                            <button type="button" class="remove-photo" id="removePhoto">✕</button>
+                        </div>
+                        <div class="upload-instructions">
+                            <p>📸 Upload a clear photo for auction display</p>
+                            <small>Accepted formats: JPG, PNG, GIF (Max 5MB)</small>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="form-group checkbox-group">
                     <input type="checkbox" id="terms" name="terms" required>
-                    <label for="terms">I agree to the <a href="#" target="_blank">Auction Terms and Conditions</a></label>
+                    <label for="terms">I agree to the <a href="#" target="_blank">SPL Terms and Conditions</a></label>
                 </div>
 
                 <div class="form-group checkbox-group">
                     <input type="checkbox" id="availability" name="availability" required>
-                    <label for="availability">I confirm my availability for the entire tournament duration</label>
+                    <label for="availability">I confirm my availability for the entire SPL tournament</label>
                 </div>
 
-                <button type="submit" class="submit-btn">🏏 Register for Auction</button>
+                <button type="submit" class="submit-btn">🏏 Register for SPL</button>
             </form>
 
             <div class="login-link">
@@ -84,13 +72,14 @@
         
         <!-- Success Message -->
         <div id="successMessage" class="message success-message" style="display: none;">
-            <h3>🎉 Registration Successful!</h3>
-            <p>Welcome to the Cricket Auction! Your registration has been confirmed.</p>
+            <h3>🎉 SPL Registration Successful!</h3>
+            <p>Welcome to Super Premier League! Your registration has been confirmed.</p>
             <div class="player-info">
                 <p><strong>Player:</strong> <span id="confirmedName"></span></p>
                 <p><strong>Position:</strong> <span id="confirmedPosition"></span></p>
                 <p><strong>Phone:</strong> <span id="confirmedPhone"></span></p>
                 <p><strong>Registration ID:</strong> <span id="registrationId"></span></p>
+                <p><strong>Photo:</strong> <span id="confirmedPhoto"></span></p>
             </div>
             <p><small>Keep your phone number safe - it's your unique identifier!</small></p>
         </div>

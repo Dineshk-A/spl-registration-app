@@ -1,16 +1,17 @@
-# 🏏 SPL Cricket Auction Registration App
+# 🏏 SPL Registration App
 
-A progressive web application for cricket player registration and auction management, built from simple HTML/CSS/JS to a full-stack React application.
+A progressive web application for SPL (Super Premier League) player registration, built from simple HTML/CSS/JS to a full-stack React application.
 
 ## 🚀 Project Phases
 
-### Phase 1: Cricket Player Registration ✅
-- Cricket-specific registration form
+### Phase 1: SPL Player Registration ✅
+- Simplified SPL registration form
 - Player position selection (Batsman, Bowler, Wicket Keeper, All Rounder)
+- Photo upload with preview and validation
 - Unique phone number validation (one registration per number)
-- Experience level tracking
-- Professional cricket-themed UI
+- Professional SPL-themed UI
 - Local storage with duplicate prevention
+- Photo file naming based on player name (ready for backend)
 
 ### Phase 2: React Frontend (Coming Next)
 - Convert to React.js
@@ -45,9 +46,9 @@ A progressive web application for cricket player registration and auction manage
 
 ```
 spl-registration-app/
-├── index.html          # Cricket player registration form
-├── styles.css          # Cricket-themed responsive styling
-├── script.js           # Player validation & duplicate checking
+├── index.html          # SPL player registration form
+├── styles.css          # SPL-themed responsive styling with photo upload
+├── script.js           # Player validation, photo handling & duplicate checking
 └── README.md           # Project documentation
 ```
 
@@ -71,16 +72,17 @@ spl-registration-app/
 
 ## ✨ Features (Phase 1)
 
-- **Cricket-Specific Registration**: Tailored for cricket player auction
+- **SPL Registration**: Simplified registration for Super Premier League
 - **Position Selection**: Batsman, Bowler, Wicket Keeper, All Rounder
+- **Photo Upload**: Upload player photo with preview and validation
 - **Unique Player Validation**: One registration per phone number
-- **Experience Tracking**: Beginner to Professional levels
-- **Age Validation**: 16-50 years (cricket auction appropriate)
 - **Indian Phone Format**: Auto-formats Indian mobile numbers (+91)
+- **Photo File Naming**: Automatically renames photos based on player name
 - **Duplicate Prevention**: Shows existing player details if phone already registered
-- **Registration ID**: Unique cricket player ID generation
+- **Registration ID**: Unique SPL player ID generation (SPL######)
 - **Responsive Design**: Works on desktop, tablet, and mobile
-- **Cricket-themed UI**: Green gradient design with cricket emojis
+- **SPL-themed UI**: Green gradient design with cricket emojis
+- **File Validation**: Image type and size validation (max 5MB)
 
 ## 🧪 Testing on EC2
 
@@ -118,31 +120,35 @@ Each phase will be committed to a separate branch:
 - `phase-3` - Backend API
 - etc.
 
-## 📝 Cricket Registration Fields
+## 📝 SPL Registration Fields
 
 - **Player Name** (required, letters only, minimum 2 characters)
 - **Phone Number** (required, Indian mobile format, unique identifier)
 - **Playing Position** (required, dropdown: Batsman/Bowler/Wicket Keeper/All Rounder)
-- **Cricket Experience** (required, dropdown: Beginner to Professional)
-- **Age** (required, 16-50 years for auction eligibility)
-- **Location/City** (required, player's base location)
-- **Previous Teams** (optional, textarea for cricket history)
-- **Auction Terms** (required checkbox)
+- **Player Photo** (required, image upload with preview)
+- **SPL Terms** (required checkbox)
 - **Tournament Availability** (required checkbox)
 
-## 🎯 Cricket-Specific Validation Rules
+## 🎯 SPL Validation Rules
 
 - **Player Name**: Minimum 2 characters, letters and dots only
 - **Phone**: Valid Indian mobile number (10 digits, starts with 6-9)
 - **Position**: Must select one primary playing position
-- **Age**: Must be between 16-50 years (auction eligibility)
-- **Location**: Valid city/location name
+- **Photo**: Valid image file (JPG, PNG, GIF) under 5MB
 - **Uniqueness**: One registration per phone number only
+
+## 📸 Photo Upload Features
+
+- **File Types**: JPG, PNG, GIF supported
+- **Size Limit**: Maximum 5MB per image
+- **Preview**: Instant photo preview after upload
+- **Auto-naming**: Photos renamed as `playername_timestamp.ext`
+- **Validation**: Real-time file type and size checking
 
 ## 🏏 Testing Features
 
 Open browser console and use these commands:
-- `viewAllPlayers()` - See all registered players
+- `viewAllPlayers()` - See all registered SPL players
 - `clearAllPlayers()` - Clear all registrations (for testing)
 
 ## 🤝 Contributing
